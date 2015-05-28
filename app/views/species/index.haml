@@ -1,0 +1,8 @@
+.row
+  .all_of_them
+    %ul
+    - @species.each do |s|
+      %li= s.name
+      = link_to 'Delete', species_path(s), method: :delete
+      
+    %h3= link_to 'Add New', '/species/new'
