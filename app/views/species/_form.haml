@@ -1,0 +1,5 @@
+= form_for(@species) do |f|
+  .form-group
+    = f.label :name
+    = f.text_field :name, :class => 'name form-control'
+    = f.submit "Submit"

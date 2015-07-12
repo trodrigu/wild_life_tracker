@@ -1,8 +1,12 @@
 Rails.application.routes.draw do
+  get 'species_pics/index'
+
+  get 'species_pics/create'
+
  root 'species#index'
- resources :species do
-   resources :sightings
- end
+ resources :species
+ resources :sightings
+ resources :species_pics, only: [:index, :create]
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

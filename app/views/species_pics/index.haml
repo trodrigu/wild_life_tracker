@@ -1,0 +1,9 @@
+%h1 Species Pic
+= form_for(SpeciesPic.new, html: { multipart: true, class: "dropzone"}) do |f|
+  .form-group
+    = f.file_field :avatar, class: "form-control"
+    %br
+    = f.submit "Upload Pic"
+
+.index
+  = render partial: 'index' 

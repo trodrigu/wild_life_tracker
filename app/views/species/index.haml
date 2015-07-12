@@ -2,7 +2,10 @@
   .all_of_them
     %ul
     - @species.each do |s|
-      %li= s.name
+      = link_to "#{s.name}", species_path(s.id)
+      - s.sightings.each do |sighting|
+        %p= sighting.location
+      = link_to 'Add a sighting!', new_sighting_path(s.id)
       = link_to 'Delete', species_path(s), method: :delete
       
     %h3= link_to 'Add New', '/species/new'

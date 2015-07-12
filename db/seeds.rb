@@ -5,3 +5,17 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+Species.delete_all
+Sighting.delete_all
+
+species = ['dog', 'cat', 'lizard', 'bird']
+locations = ['Poway', 'Escondido', 'Fallbrook', 'Solana Beach']
+
+species.each do |s|
+  locations.each do |l|
+    new_species = Species.create(name: s)
+    Sighting.create( species_id: new_species.id, location: l)
+  end
+end
+
+

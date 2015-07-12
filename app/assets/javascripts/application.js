@@ -14,3 +14,20 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+//
+
+$(document).ready(function(){
+  //disable auto discover
+  Dropzone.autoDiscover = false;
+
+  var dropzone = new Dropzone (".dropzone", {
+    maxFilesize: 256,
+    paramName: "avatar",
+    addRemoveLinks: false
+  });
+
+  dropzone.on("success", function(file) {
+    this.removeFile(file)
+    $.getScript("/images")
+  })
+});

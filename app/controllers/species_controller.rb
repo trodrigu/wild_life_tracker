@@ -3,7 +3,30 @@ class SpeciesController < ApplicationController
     @species = Species.new
   end
 
+  def create
+    @species = Species.new(species_params)
+    if @species.save
+      # flash[:success] = "You added a species"
+      redirect_to @species
+    end
+  end
+
+  def show
+    @species = Species.find(params[:id])
+  end
+
+  def edit
+    @species = Species.find(params[:id])
+  end
+
   def update
+    @species = Species.find(params[:id])
+    if @species.update_attributes(species_params)
+      flash[:success] = "Done"
+      redirect_to @species
+    else
+      render 'edit'
+    end
   end
 
   def destroy
@@ -16,17 +39,7 @@ class SpeciesController < ApplicationController
     @species = Species.all
   end
 
-  def create
-    @species = Species.new(species_params)
-    if @species.save
-      # flash[:success] = "You added a species"
-      redirect_to @species
-    end
-  end
 
-  def show
-    @species = Species.find(params[:id])
-  end
   private
     def species_params
       params.require(:species).permit(:name)
