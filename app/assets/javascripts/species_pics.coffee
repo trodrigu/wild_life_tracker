@@ -1,3 +1,8 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://coffeescript.org/
+jQuery ($) ->
+  Dropzone.autoDiscover = false
+  dropzone = new Dropzone ".dropzone", maxFilesize:256, paramName: "species_pic[avatar]", addRemoveLinks: false
+  dropzone.on 'success', (file) ->
+    console.log 'worked'
+    @removeFile file
+    $.getScript '/images'
+    return

@@ -4,8 +4,12 @@ class SpeciesPicsController < ApplicationController
     @image = SpeciesPic.new
   end
 
+  def new
+    @image = SpeciesPic.new
+  end
+
   def create
-    @image = SpeciesPic.new(image_params)
+    @image = SpeciesPic.create(image_params)
 
     if @image.save
       render json: { message: "success", fileID: @image.id }, status: 200
@@ -15,6 +19,6 @@ class SpeciesPicsController < ApplicationController
   end
   private
   def image_params
-    params.require(:species_pic).permit(species: :avatar)
+    params.require(:species_pic).permit(:avatar)
   end
 end
