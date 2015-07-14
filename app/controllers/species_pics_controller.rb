@@ -2,6 +2,11 @@ class SpeciesPicsController < ApplicationController
   def index
     @images = SpeciesPic.all
     @image = SpeciesPic.new
+    @species = Species.find(params[:id])
+    respond_to do |format|
+      format.js {}
+      format.html 
+    end
   end
 
   def new
@@ -19,6 +24,6 @@ class SpeciesPicsController < ApplicationController
   end
   private
   def image_params
-    params.require(:species_pic).permit(:avatar)
+    params.require(:species_pic).permit(:avatar, :species_id)
   end
 end

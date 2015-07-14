@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require dropzone
+//= require packery.pkgd
 //= require turbolinks
 //= require_tree .
 //

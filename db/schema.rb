@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150712134515) do
+ActiveRecord::Schema.define(version: 20150713204533) do
 
   create_table "sightings", force: :cascade do |t|
     t.datetime "date"
@@ -36,6 +36,9 @@ ActiveRecord::Schema.define(version: 20150712134515) do
     t.datetime "avatar_updated_at"
     t.datetime "created_at",          null: false
     t.datetime "updated_at",          null: false
+    t.integer  "species_id"
   end
+
+  add_index "species_pics", ["species_id"], name: "index_species_pics_on_species_id"
 
 end

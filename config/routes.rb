@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get 'species_pics/index'
+  get 'species_pics/index/:id', to: 'species_pics#index', as: 'species_pics_index'
 
   get 'species_pics/create'
 

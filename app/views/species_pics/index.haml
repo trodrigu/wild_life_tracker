@@ -2,10 +2,11 @@
   %h1 Species Pic
 
 = form_for(@image, html: { multipart: true, class: "dropzone"}) do |f|
-  .fall-back
+  = f.hidden_field :species_id, value: @species.id
+  .fallback
     = f.file_field :avatar, class: "form-control"
     %br
     = f.submit "Upload Pic"
 
-.index
+.index_of_pics
   = render partial: 'index' 

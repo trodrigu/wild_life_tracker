@@ -1,11 +1,15 @@
 .row
-  .all_of_them
-    %ul
-    - @species.each do |s|
-      = link_to "#{s.name}", species_path(s.id)
-      - s.sightings.each do |sighting|
-        %p= sighting.location
-      = link_to 'Add a sighting!', new_sighting_path(s.id)
-      = link_to 'Delete', species_path(s), method: :delete
-      
-    %h3= link_to 'Add New', '/species/new'
+  .all_of_them.clearfix
+    #container
+      - @species.each do |s|
+        .item
+          = link_to "#{s.name}", species_path(s.id)
+          - if !s.species_pics.empty?
+            = image_tag(s.species_pics.first.avatar)
+          - s.sightings.each do |sighting|
+            %p= sighting.location
+          = link_to 'Add a sighting!', new_sighting_path(s.id)
+          = link_to 'Delete', species_path(s), method: :delete
+
+-#    .lower-add  
+      %h3= link_to 'Add New', '/species/new'
