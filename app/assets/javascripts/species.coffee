@@ -2,5 +2,6 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 container = document.querySelector('#container')
-myPackery = new Packery(container, {itemSelector: '.item', gutter: 50})
+myPackery = new Packery(container, {itemSelector: '.item', gutter: 25})
+myPackery.layout()
 console.log 'yep'

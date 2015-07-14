@@ -1,3 +1,4 @@
+require 'pry'
 class SpeciesController < ApplicationController
   def new
     @species = Species.new
@@ -36,7 +37,30 @@ class SpeciesController < ApplicationController
   end
 
   def index
-    @species = Species.all
+    if params[:location] == '' && params[:radius] == ''
+      @species = Species.all
+    elsif params[:location] && params[:radius] == ''
+      @locations = Sighting.near("#{params[:location]}")
+      species = []
+      @locations.each do |l|
+        species << l.id
+      end
+      @species = Species.where(id: species)
+    elsif params[:location] == '' && params[:radius]
+      # implement users address relationship
+      # for now render all
+      @species = Species.all
+    elsif params[:location] && params[:radius]
+      @locations = Sighting.near("#{params[:location]}", params[:radius])
+      species = []
+      @locations.each do |l|
+        species << l.id
+      end
+      @species = Species.where(id: species)
+      params[:location].delete('1')
+    else
+      @species = Species.all
+    end
   end
 
 

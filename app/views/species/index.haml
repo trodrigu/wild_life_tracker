@@ -1,15 +1,27 @@
 .row
+  %h3 Search By Location
+  %form{ action:"" }
+    .form-group
+      %label{ for:'Check near you'}= 'Check near you!'
+      %input{ type:'text', name:'location', value:''}
+      %label{ for:'radius'}= 'Radius'
+      %input{ type:'number', name:'radius', value:''}
+      %button.btn.btn-primary Filter
+
   .all_of_them.clearfix
     #container
       - @species.each do |s|
-        .item
-          = link_to "#{s.name}", species_path(s.id)
+        .item.well
           - if !s.species_pics.empty?
-            = image_tag(s.species_pics.first.avatar)
-          - s.sightings.each do |sighting|
-            %p= sighting.location
-          = link_to 'Add a sighting!', new_sighting_path(s.id)
-          = link_to 'Delete', species_path(s), method: :delete
+            = image_tag(s.species_pics.first.avatar, class: 'img-responsive thumbnail')
+          .info
+            %h3= link_to "#{s.name}", species_path(s.id), class: 'info-name'
+            - s.sightings.each do |sighting|
+              %p= sighting.location
+            = link_to 'Add a sighting!', new_sighting_path(s.id)
+            = link_to 'Delete', species_path(s), method: :delete, data: { confirm: 'Are you sure?' }
 
--#    .lower-add  
-      %h3= link_to 'Add New', '/species/new'
+  %div
+    %hr
+    .lower-add  
+      %h3= link_to 'Add A New Species', '/species/new'

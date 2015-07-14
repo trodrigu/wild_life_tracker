@@ -1,8 +1,8 @@
 class SpeciesPicsController < ApplicationController
   def index
-    @images = SpeciesPic.all
     @image = SpeciesPic.new
     @species = Species.find(params[:id])
+    @images = @species.species_pics
     respond_to do |format|
       format.js {}
       format.html 
