@@ -1,14 +1,15 @@
 .row
-  %h3 Search By Location
-  %form{ action:"" }
-    .form-group
-      %label{ for:'Check near you'}= 'Check near you!'
-      %input{ type:'text', name:'location', value:''}
-      %label{ for:'radius'}= 'Radius'
-      %input{ type:'number', name:'radius', value:''}
-      %button.btn.btn-primary Filter
+  .all_of_them
+    .search
+      %h3 Search By Location
+      %form{ action:"" }
+        .form-group
+          %label{ for:'Check near you'}= 'Check near you!'
+          %input{ type:'text', name:'location', value:''}
+          %label{ for:'radius'}= 'Radius'
+          %input{ type:'number', name:'radius', value:''}
+          %button.btn.btn-primary Filter
 
-  .all_of_them.clearfix
     #container
       - @species.each do |s|
         .item.well

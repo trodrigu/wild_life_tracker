@@ -1,6 +1,10 @@
 // Place all the styles related to the Species controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.search {
+  padding-bottom: 2em;
+}
+
 .new_species {
   margin-top: 10em;
 }
@@ -12,16 +16,8 @@
   padding: 5em;
 }
 
-.all_of_them {
-  padding: 5em;
-}
-
 .item {
   width: 20%;
-}
-
-.panel-primary {
-  margin-top: 5em;
 }
 
 .footer {

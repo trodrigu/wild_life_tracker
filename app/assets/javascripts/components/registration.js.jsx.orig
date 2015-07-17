@@ -1,0 +1,52 @@
+var Registration = React.createClass({
+  getInitialState: function() {
+    return { modalIsOpen: false
+    };
+  },
+
+  openModal: function() {
+    console.log('damn');
+  },
+
+  closeModal: function() {
+    this.setState( { modalIsOpen: false } );
+  },
+
+  handleModalCloseRequest: function() {
+    this.setState( { modalIsOpen: false } );
+  },
+
+  handleSaveClicked: function(e) {
+    alert('Save button was clicked');
+  },
+
+  render: function(){
+    return (
+        <div>
+          <Button onClick={ this.openModal }>Open Modal</Button>
+          { this.modalIsOpen ? 
+            console.log('This is wrong'j : ''
+          }
+        </div>
+          )
+  }
+});
+
+var Button = React.createClass({
+  render: function(){
+    return (
+        <button className="btn btn-primary" type={this.props.type}>{this.props.children}</button>
+        )
+  }
+});
+
+var Modal = React.createClass({
+  render: function(){
+    <Modal
+    onRequestClose={ this.handleModalCloseRequest }
+    closeTimeoutMS={ 150 }
+  >
+  { this.props.children }
+    </Modal>
+  }
+});

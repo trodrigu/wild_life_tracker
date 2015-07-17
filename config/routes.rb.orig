@@ -1,5 +1,12 @@
 Rails.application.routes.draw do
+<<<<<<< HEAD
+<<<<<<< HEAD
+  devise_for :users, controllers: { registrations: "registrations" }
+=======
+>>>>>>> parent of 96f6311... Add devise
+=======
   devise_for :users
+>>>>>>> parent of 0ff80f1... Start react modal
   get 'species_pics/index/:id', to: 'species_pics#index', as: 'species_pics_index'
 
   get 'species_pics/create'

@@ -28,8 +28,14 @@ gem 'haml'
 gem 'bootstrap-sass'
 gem 'geocoder'
 gem 'packery-rails'
+<<<<<<< HEAD
 gem 'devise'
-gem 'omniauth-twitter'
+<<<<<<< HEAD
+gem 'react-rails', '~> 1.0'
+=======
+>>>>>>> parent of 96f6311... Add devise
+=======
+>>>>>>> parent of 0ff80f1... Start react modal
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 gem 'paperclip', '~> 4.2.0'
