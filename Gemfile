@@ -30,6 +30,7 @@ gem 'geocoder'
 gem 'packery-rails'
 gem 'devise'
 gem 'omniauth-twitter'
+gem 'faker'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 gem 'paperclip', '~> 4.2.0'

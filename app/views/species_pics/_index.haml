@@ -1,3 +1,5 @@
 - @images.each do |image|
   .img-thumbnail
     = image_tag(image.avatar.url, alt: image.avatar.url)
+    - if image.user_id == @user.id
+      = link_to 'Delete Your Pic', species_pics_destroy_path(image.id), method: :delete

@@ -3,6 +3,7 @@
 
 = form_for(@image, html: { multipart: true, class: "dropzone"}) do |f|
   = f.hidden_field :species_id, value: @species.id
+  = f.hidden_field :user_id, value: @user.id
   .fallback
     = f.file_field :avatar, class: "form-control"
     %br

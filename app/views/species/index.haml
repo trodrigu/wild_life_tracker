@@ -20,7 +20,7 @@
             - s.sightings.each do |sighting|
               %p= sighting.location
             = link_to 'Add a sighting!', new_sighting_path(s.id)
-            = link_to 'Delete', species_path(s), method: :delete, data: { confirm: 'Are you sure?' }
+            /= link_to 'Delete', species_path(s), method: :delete, data: { confirm: 'Are you sure?' }
 
   %div
     %hr
