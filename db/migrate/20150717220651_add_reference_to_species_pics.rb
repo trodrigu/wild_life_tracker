@@ -1,5 +1,5 @@
 class AddReferenceToSpeciesPics < ActiveRecord::Migration
   def change
-    add_column :species_pics, :user_id, :reference
+    add_reference :species_pics, :user, index: true, foreign_key: true
   end
 end

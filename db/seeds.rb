@@ -5,10 +5,9 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-User.delete_all
-Species.delete_all
 Sighting.delete_all
-SpeciesPic.delete_all
+Species.delete_all
+User.delete_all
 
 species = ['Dog', 'Cat', 'Lizard', 'Bird']
 locations = ['Poway', 'Escondido', 'Fallbrook', 'Solana Beach']

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150717220651) do
+ActiveRecord::Schema.define(version: 20150718211131) do
 
   create_table "sightings", force: :cascade do |t|
     t.datetime "date"
@@ -29,8 +29,19 @@ ActiveRecord::Schema.define(version: 20150717220651) do
     t.datetime "updated_at", null: false
   end
 
-# Could not dump table "species_pics" because of following NoMethodError
-#   undefined method `[]' for nil:NilClass
+  create_table "species_pics", force: :cascade do |t|
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+    t.integer  "species_id"
+    t.integer  "user_id"
+  end
+
+  add_index "species_pics", ["species_id"], name: "index_species_pics_on_species_id"
+  add_index "species_pics", ["user_id"], name: "index_species_pics_on_user_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -45,7 +56,6 @@ ActiveRecord::Schema.define(version: 20150717220651) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
-    t.string   "twitter"
     t.string   "uid"
     t.string   "provider"
   end
