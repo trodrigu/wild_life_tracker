@@ -2,6 +2,7 @@
 
 FactoryGirl.define do
   factory :species do
+    id 1
     name { Faker::Team.creature }
   end
 end
