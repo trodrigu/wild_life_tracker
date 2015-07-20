@@ -9,7 +9,7 @@ RSpec.describe SpeciesController, :type => :controller do
         rabbit = create(:species)
         bearded_dragon = create(:species, id: 2, name: 'bearded dragon')
         get :index
-        expect(assigns(@species)).to match_array([rabbit, bearded_dragon])
+        expect(assigns(:species)).to match_array([rabbit, bearded_dragon])
       end
     end
     context 'with params[:location] set and params[:radius] empty' do
@@ -38,7 +38,7 @@ RSpec.describe SpeciesController, :type => :controller do
         rabbit = create(:species, name: 'rabbit')
         bearded_dragon = create(:species, id: 2, name: 'bearded dragon')
         get :index
-        expect(assigns(@species)).to match_array([rabbit.name, bearded_dragon.name])
+        expect(assigns(:species)).to match_array([rabbit, bearded_dragon])
       end
     end
   end

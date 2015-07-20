@@ -14,19 +14,21 @@ class SightingsController < ApplicationController
 #  end
   def new
     @sightings = Sighting.new
-    @species = Species.find(params[:format])
+    @species = Species.find(params[:id])
   end
 
   def create
     @sightings = Sighting.new(sightings_params)
     if @sightings.save
       redirect_to '/species'
+    else
+      render :new
     end
   end
 
   def destroy
-    @species = Species.find(params[:id])
-    @species.sightings.destroy
+    @sighting = Sighting.find(params[:id])
+    @sighting.destroy
     redirect_to '/species'
   end
 

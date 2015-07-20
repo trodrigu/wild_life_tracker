@@ -3,12 +3,15 @@ require 'rails_helper'
 RSpec.describe SightingsController, :type => :controller do
   
   describe 'GET #new' do
+    before :each do
+      @species = create(:species)
+    end
     it 'assigns a new sighting to @sighting' do
-      get :new
-      expect(assigns(:species)).to be_a_new(Species)
+      get :new, id: @species 
+      expect(assigns(:sightings)).to be_a_new(Sighting)
     end
     it 'renders the :new template' do
-      get :new
+      get :new, id: @species
       expect(response).to render_template :new
     end
   end
@@ -30,20 +33,21 @@ RSpec.describe SightingsController, :type => :controller do
       it 'does not save to the database' do
         expect{
           post :create,
-          sighting: attributes_for(:sighting)
+          sighting: attributes_for(:invalid_sighting)
         }.not_to change(Sighting, :count)
       end
       it 're-renders the new template' do
         post :create,
           sighting: attributes_for(:invalid_sighting)
-        expect(response).to render_template :index
+        expect(response).to render_template :new
       end
     end
   end
 
   describe 'DELETE #destroy' do
     before :each do
-      @sighting = create(:sighting)
+      @species = create(:species)
+      @sighting = create(:sighting, species_id: @species.id)
     end
     it 'deletes the sighting' do
       expect{
