@@ -1,11 +1,12 @@
 require 'rails_helper'
+require 'pry'
 
 RSpec.describe SpeciesController, :type => :controller do
 
   describe 'Get #index' do
     context 'with params[:location] an empty string and params[:radius] an empty string' do
       it 'populates an array of all species' do
-        rabbit = create(:species, name: 'rabbit')
+        rabbit = create(:species)
         bearded_dragon = create(:species, id: 2, name: 'bearded dragon')
         get :index
         expect(assigns(@species)).to match_array([rabbit, bearded_dragon])
@@ -14,22 +15,22 @@ RSpec.describe SpeciesController, :type => :controller do
     context 'with params[:location] set and params[:radius] empty' do
       it 'assigns the requested location to @location' do
         get :index, locations: 'San Diego', radius: ''
-        expect(assigns(:locations)).to eq locations
+        expect(assigns(:locations)).to eq(@locations)
       end
       it 'populates an array of locations near the location' do
         @species = create(:species)
         @sighting = create(:sighting, location: 'San Diego', species_id: @species.id)
         get :index, location: 'San Diego', radius: ''
-        expect(assigns(:locations)).to match_array(['San Diego'])
+        expect(assigns(:locations)).to match_array([@sighting])
       end
     end
     context 'with params[:location] set and params[:radius] set' do
       it 'populates an array of locations near and within a radius' do
         @species = create(:species)
-        @near_sighting = create(:sighting, location: 'San Diego', species_id: @species.id)
+        @near_sighting = create(:sighting, location: 'Poway', species_id: @species.id)
         @far_sighting = create(:sighting, location: 'New York', species_id: @species.id)
-       get :index, location: 'San Diego', radius: '50'
-       expect(assigns(@locations)).to match_array(['San Diego'])
+       get :index, location: 'Poway', radius: 50
+       expect(assigns(:locations)).to match_array([@near_sighting])
       end
     end
     context 'with params[:location] nil and params[:radius] nil' do

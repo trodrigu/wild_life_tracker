@@ -1,4 +1,3 @@
-require 'pry'
 class SightingsController < ApplicationController
 #  def get_user_address
 #    @address = current_user.addresses[0]
