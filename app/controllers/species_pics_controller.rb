@@ -10,10 +10,6 @@ class SpeciesPicsController < ApplicationController
     end
   end
 
-  def new
-    @image = SpeciesPic.new
-  end
-
   def create
     @image = SpeciesPic.create(image_params)
 

@@ -1,4 +1,3 @@
-require 'pry'
 class SpeciesController < ApplicationController
   def index
     if params[:location] == '' && params[:radius] == ''
@@ -36,6 +35,8 @@ class SpeciesController < ApplicationController
     if @species.save
       # flash[:success] = "You added a species"
       redirect_to @species
+    else
+      render :new
     end
   end
 
