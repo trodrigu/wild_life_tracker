@@ -24,7 +24,6 @@ gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
 
-gem 'rack-cors', '0.3.0'
 gem 'haml'
 gem 'bootstrap-sass'
 gem 'geocoder'
@@ -45,7 +44,6 @@ gem 'pry', group: :development
 gem 'pry-rails', group: :development
 gem 'dotenv-rails', :groups => [:development, :test]
 group :development, :test do
-  # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
   gem 'spring'
   gem 'rspec-rails', '~> 3.1.0'

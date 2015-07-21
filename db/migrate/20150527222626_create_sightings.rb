@@ -5,7 +5,6 @@ class CreateSightings < ActiveRecord::Migration
       t.string :Decimal
       t.string :longitude
       t.string :Decimal
-      t.string :date
       t.string :datetime
 
       t.timestamps null: false
