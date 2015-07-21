@@ -1,16 +1,16 @@
 %nav{ 'class': 'navbar navbar-default' }
   .container-fluid
     .navbar-header
-      %button{ 'type':'button', 'class':'navbar-toggle collapsed', 'data-target':'#navbar', 'aria-expanded':'false', 'data-toggle':'collapse', 'aria-controls':'navbar'}
-        %span{ class:'sr-only' }
+      %button{ :type => 'button', :class => 'navbar-toggle collapsed', :data-target => '#navbar', :aria-expanded => 'false', :data-toggle => 'collapse', :aria-controls => 'navbar'}
+        %span{ :class => 'sr-only' }
           Toggle Navigation
-        %span{ class:'icon-bar' }
-        %span{ class:'icon-bar' }
-        %span{ class:'icon-bar' }
-      = link_to 'Wild Life Tracker', root_path, class: 'navbar-brand'
+        %span{ :class => 'icon-bar' }
+        %span{ :class => 'icon-bar' }
+        %span{ :class => 'icon-bar' }
+      = link_to 'Wild Life Tracker', root_path, :class => 'navbar-brand'
 
-    .collapse.navbar-collapse{ id:'navbar' }
-      %ul{ class:'nav navbar-nav pull-right' }
-        %li{ class:'active' }
-          = render partial: 'devise/menus/login_items'
-          = render partial: 'devise/menus/registration_items'
+    .collapse.navbar-collapse{ :id => 'navbar' }
+      %ul{ :class => 'nav navbar-nav pull-right' }
+        %li{ :class => 'active' }
+          = render :partial => 'devise/menus/login_items'
+          = render :partial => 'devise/menus/registration_items'
