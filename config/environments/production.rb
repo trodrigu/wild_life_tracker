@@ -2,7 +2,6 @@ Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
   config.paperclip_defaults= {
     :storage => :s3,
-    :s3_headers => { "Content-Disposition": "attachment" },
     :s3_credentials =>{
       :bucket => ENV['S3_BUCKET_NAME'],
       :access_key_id => ENV['AWS_ACCESS_KEY_ID'],
