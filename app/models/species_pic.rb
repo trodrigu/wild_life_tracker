@@ -6,6 +6,6 @@ class SpeciesPic < ActiveRecord::Base
     :thumb => '100x100>' 
   }
   validates_attachment :avatar, presence: true
-  validates_attachment_content_type :avatar, :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
+  validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
   validates_with AttachmentSizeValidator, :attributes => :avatar, :less_than => 2.megabytes
 end
