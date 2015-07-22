@@ -1,4 +1,6 @@
 class SpeciesController < ApplicationController
+  before_action :authenticate_user!
+  
   def index
     if params[:location] == '' && params[:radius] == ''
       @species = Species.all
@@ -33,7 +35,7 @@ class SpeciesController < ApplicationController
   def create
     @species = Species.new(species_params)
     if @species.save
-      # flash[:success] = "You added a species"
+       flash[:success] = "You added a species"
       redirect_to @species
     else
       render :new
