@@ -16,5 +16,6 @@
 //= require dropzone
 //= require packery.pkgd
 //= require turbolinks
+//= require species_pics
 //= require_tree .
 //
