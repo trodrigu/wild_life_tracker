@@ -1,6 +1,7 @@
 jQuery ($) ->
   Dropzone.autoDiscover = false
   #dropzone = new Dropzone ".dropzone",
+  console.log 'wtf'
   $('.dropzone').dropzone
     paramName: "species_pic[avatar]",
     addRemoveLinks: false
