@@ -25,8 +25,8 @@ jQuery(function($) {
     paramName: "species_pic[avatar]",
     addRemoveLinks: false
   });
-  return dropzone.on('success', function(file) {
-    this.removeFile(file);
-    $.getScript('/species_pics/index/' + $('#species_pic_species_id').val());
-  });
+  //return dropzone.on('success', function(file) {
+    //this.removeFile(file);
+    //$.getScript('/species_pics/index/' + $('#species_pic_species_id').val());
+  //});
   });
