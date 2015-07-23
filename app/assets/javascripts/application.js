@@ -23,7 +23,7 @@ jQuery(function($) {
   Dropzone.autoDiscover = false;
   dropzone = new Dropzone(".dropzone", {
     paramName: "species_pic[avatar]",
-    addRemoveLinks: false
+    addRemoveLinks: true
   });
   //return dropzone.on('success', function(file) {
     //this.removeFile(file);
