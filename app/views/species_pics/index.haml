@@ -1,6 +1,18 @@
 .jumbotron.species_pic_index_jumbo
   %h1 Species Pic
-
+:javascript
+  jQuery(function($) {
+    var dropzone;
+    Dropzone.autoDiscover = false;
+    dropzone = new Dropzone(".dropzone", {
+      paramName: "species_pic[avatar]",
+      addRemoveLinks: false
+    });
+    return dropzone.on('success', function(file) {
+      this.removeFile(file);
+      $.getScript('/species_pics/index/' + $('#species_pic_species_id').val());
+    });
+  });
 = form_for(@image, html: { multipart: true, class: "dropzone"}) do |f|
   = f.hidden_field :species_id, value: @species.id
   = f.hidden_field :user_id, value: @user.id
