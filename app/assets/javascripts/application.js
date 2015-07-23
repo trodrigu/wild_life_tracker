@@ -18,15 +18,3 @@
 //= require turbolinks
 //= require_tree .
 //
-jQuery(function($) {
-  var dropzone;
-  Dropzone.autoDiscover = false;
-  dropzone = new Dropzone(".dropzone", {
-    paramName: "species_pic[avatar]",
-    addRemoveLinks: true
-  });
-  //return dropzone.on('success', function(file) {
-    //this.removeFile(file);
-    //$.getScript('/species_pics/index/' + $('#species_pic_species_id').val());
-  //});
-  });
