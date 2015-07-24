@@ -68,6 +68,6 @@ class SpeciesController < ApplicationController
 
   private
     def species_params
-      params.require(:species).permit(:name)
+      params.require(:species).permit(:name, :id)
     end
 end
