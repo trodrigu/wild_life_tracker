@@ -1,9 +1,12 @@
 require 'rails_helper'
-require 'pry'
 
 RSpec.describe SpeciesController, :type => :controller do
 
   describe 'Get #index' do
+    before :each do
+      user = create(:user)
+      sign_in user
+    end
     context 'with params[:location] an empty string and params[:radius] an empty string' do
       it 'populates an array of all species' do
         rabbit = create(:species)
@@ -44,6 +47,10 @@ RSpec.describe SpeciesController, :type => :controller do
   end
 
   describe 'GET #show' do
+    before :each do
+      user = create(:user)
+      sign_in user
+    end
     it 'renders the show template' do
       species = create(:species)
       get :show, id: species
@@ -52,6 +59,10 @@ RSpec.describe SpeciesController, :type => :controller do
   end
 
   describe 'GET #new' do
+    before :each do
+      user = create(:user)
+      sign_in user
+    end
     it 'renders the new template' do
       get :new
       expect(response).to render_template :new
@@ -59,6 +70,10 @@ RSpec.describe SpeciesController, :type => :controller do
   end
 
   describe 'GET #edit' do
+    before :each do
+      user = create(:user)
+      sign_in user
+    end
     it 'renders the :edit template' do
       species = create(:species)
       get :edit, id: species
@@ -68,6 +83,8 @@ RSpec.describe SpeciesController, :type => :controller do
 
   describe 'PATCH #update' do
     before :each do
+      user = create(:user)
+      sign_in user
       @species = create(:species)
     end
 
@@ -104,6 +121,10 @@ RSpec.describe SpeciesController, :type => :controller do
   end
 
   describe 'POST #create' do
+    before :each do
+      user = create(:user)
+      sign_in user
+    end
     context 'with valid attributes' do
       it 'saves the new species in the database' do
         expect{
@@ -129,6 +150,8 @@ RSpec.describe SpeciesController, :type => :controller do
   describe 'DELETE #destroy' do
     before :each do
       @species = create(:species)
+      user = create(:user)
+      sign_in user
     end
     it 'deletes the species' do
       expect{

@@ -13,10 +13,15 @@ RSpec.describe SpeciesPicsController, :type => :controller do
   end
 
   describe 'POST #create' do
+    before :each do
+      user = create(:user)
+      sign_in user
+      @species = create(:species)
+    end
     context 'with valid attributes' do
       it 'saves the pic in the database' do
         expect{
-          post :create, species_pic: attributes_for(:species_pic)
+          post :create, species_pic: attributes_for(:species_pic, species_id: @species.id)
         }.to change(SpeciesPic, :count).by(1)
       end
       it 'doesn\'t redirect to species_pic#index' do
@@ -45,12 +50,14 @@ RSpec.describe SpeciesPicsController, :type => :controller do
 
   describe 'DELETE #destroy' do
     before :each do
-      @species_pic = create(:species_pic)
+      user = create(:user)
+      sign_in user
       @species = create(:species)
+      @species_pic = create(:species_pic, species_id: @species.id)
     end
     it 'deletes the species pic' do
       expect{
-        delete :destroy, id: @species_pic, species_id: @species
+        delete :destroy, id: @species_pic
       }.to change(SpeciesPic, :count).by(-1)
     end
     it 'redirects to species_pics#index' do
