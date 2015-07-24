@@ -10,7 +10,6 @@
     = stylesheet_link_tag 'http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic'
     = stylesheet_link_tag 'http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800'
     = csrf_meta_tags
-    = javascript_include_tag 'application', 'data-turbolinks-track' => true
   %body
     = render :partial => 'layouts/nav'
     .container
@@ -19,3 +18,4 @@
           %p= message
       = yield
       = render :partial => 'layouts/footer'
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
