@@ -21,12 +21,12 @@ users = []
 end
 # Make sure to have jpg assets numbered 138 - 146 in app/assets/images/
 @i = 138
+@l = 0
 species.each do |s|
-  locations.each do |l|
-    new_species = Species.create(name: s)
-    Sighting.create( species_id: new_species.id, location: l)
-    SpeciesPic.create( species_id: new_species.id, avatar: File.new("#{Rails.root}/app/assets/images/#{@i}.jpg"), user_id: users.sample.id )
-    @i += 1 unless @i == 146
-  end
+  new_species = Species.create(name: s)
+  Sighting.create( species_id: new_species.id, location: locations[@l] )
+  SpeciesPic.create( species_id: new_species.id, avatar: File.new("#{Rails.root}/app/assets/images/#{@i}.jpg"), user_id: users.sample.id )
+  @i += 1 unless @i == 146
+  @l += 1
 end
 
