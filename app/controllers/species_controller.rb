@@ -17,11 +17,8 @@ class SpeciesController < ApplicationController
       @species = Species.all
     elsif params[:location] && params[:radius]
       @locations = Sighting.near("#{params[:location]}", params[:radius])
-      species = []
-      @locations.each do |l|
-        species << l.id
-      end
-      @species = Species.where(id: species)
+      species_ids = @locations.map(&:species_id)
+      @species = Species.where(id: species_ids)
       params[:location].delete('1')
     else
       @species = Species.all

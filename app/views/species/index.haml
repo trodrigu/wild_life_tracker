@@ -13,7 +13,7 @@
     #container
       - @species.each do |s|
         .item.well
-          - if !s.species_pics.empty?
+          - if s.species_pics.present?
             = image_tag(s.species_pics.first.avatar, class: 'img-responsive thumbnail')
           .info
             %h3= link_to "#{s.name}", species_path(s.id), class: 'info-name'
