@@ -30,10 +30,10 @@ RSpec.describe SpeciesController, :type => :controller do
     context 'with params[:location] set and params[:radius] set' do
       it 'populates an array of locations near and within a radius' do
         @species = create(:species)
-        @near_sighting = create(:sighting, location: 'Poway', species_id: @species.id)
-        @far_sighting = create(:sighting, location: 'New York', species_id: @species.id)
-       get :index, location: 'Poway', radius: 50
-       expect(assigns(:locations)).to match_array([@near_sighting])
+        @near_sighting = create(:sighting, location: 'Poway', species_id: @species.id, id: 200)
+        @far_sighting = create(:sighting, location: 'New York', species_id: @species.id, id: 100)
+        get :index, location: 'Poway', radius: 50
+        expect(assigns(:species)).to match_array([@near_sighting.species])
       end
     end
     context 'with params[:location] nil and params[:radius] nil' do
